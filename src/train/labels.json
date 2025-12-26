@@ -1,0 +1,10 @@
+{
+  "labels": [
+    { "name": "产品质量", "description": "关于产品本身质量、功能、外观的评价" },
+    { "name": "物流服务", "description": "关于配送速度、物流跟踪的评价" },
+    { "name": "包装问题", "description": "关于商品包装完整性的评价" },
+    { "name": "客服态度", "description": "关于客服响应和服务态度的评价" },
+    { "name": "价格", "description": "关于商品价格合理性的评价" },
+    { "name": "售后服务", "description": "关于退换货、维修等售后的评价" }
+  ]
+}
