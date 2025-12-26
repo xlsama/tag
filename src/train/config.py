@@ -9,8 +9,9 @@ LABELS_FILE = TRAIN_DIR / 'labels.json'
 OUTPUT_DIR = TRAIN_DIR / 'output'
 
 # 模型配置
-MODEL_NAME = 'unsloth/Qwen3-4B-bnb-4bit'
+MODEL_NAME = '/home/xlsama/.cache/modelscope/hub/models/unsloth/Qwen3-4B-unsloth-bnb-4bit'
 MAX_SEQ_LENGTH = 512
+
 
 # LoRA 配置
 LORA_R = 16

@@ -3,9 +3,8 @@
 import json
 
 from datasets import Dataset
-from trl import SFTTrainer
-from transformers import TrainingArguments
 from unsloth import FastLanguageModel
+from trl import SFTConfig, SFTTrainer
 
 from . import config
 
@@ -76,7 +75,7 @@ def train():
 
     # 训练
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    training_args = TrainingArguments(
+    training_args = SFTConfig(
         output_dir=str(config.OUTPUT_DIR),
         num_train_epochs=config.NUM_EPOCHS,
         per_device_train_batch_size=config.BATCH_SIZE,
@@ -86,18 +85,18 @@ def train():
         logging_steps=config.LOGGING_STEPS,
         save_steps=config.SAVE_STEPS,
         save_total_limit=2,
-        fp16=True,
+        bf16=True,
         optim='adamw_8bit',
         report_to='none',
+        dataset_text_field='text',
+        max_length=config.MAX_SEQ_LENGTH,
     )
 
     trainer = SFTTrainer(
         model=model,
         args=training_args,
         train_dataset=dataset,
-        tokenizer=tokenizer,  # type: ignore
-        dataset_text_field='text',  # type: ignore
-        max_seq_length=config.MAX_SEQ_LENGTH,  # type: ignore
+        processing_class=tokenizer,  # type: ignore
     )
 
     print('开始训练...')
