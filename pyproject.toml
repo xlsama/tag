@@ -2,8 +2,15 @@
 name = "tag"
 version = "0.1.0"
 description = "评论多标签分类模型训练"
-requires-python = ">=3.14"
-dependencies = ["unsloth", "datasets", "trl"]
+requires-python = ">=3.10"
+dependencies = [
+    "unsloth",
+    "datasets",
+    "trl",
+    "fastapi[standard]>=0.127.0",
+    "sqlalchemy>=2.0.45",
+]
+
 
 [dependency-groups]
 dev = ["ruff>=0.14.10"]
